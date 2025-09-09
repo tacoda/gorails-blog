@@ -1,4 +1,4 @@
-<%= form_with model: blog_post do |form| %>
+<%= form_with model: blog_post, class: "mt-6" do |form| %>
   <% if form.object.errors.any? %>
     <div>
       <% form.object.errors.full_messages.each do |message| %>
@@ -7,28 +7,35 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="p-2">
+    <%= form.label :title, class: "font-bold p-2" %>
+    <%= form.text_field :title, class: "bg-white rounded p-2" %>
   </div>
-  <div>
-    <%= form.label :cover_image %>
+  <div class="p-2">
+    <%= form.label :cover_image, class: "font-bold p-2" %>
     <% if blog_post.cover_image.present? %>
       <div id="<%= dom_id(blog_post, :cover_image) %>">
         <%= image_tag blog_post.cover_image, class: "w-1/3" %>
-        <%= link_to "Remove cover image", blog_post_cover_image_path(blog_post), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+        <%= link_to "Remove cover image",
+        blog_post_cover_image_path(blog_post),
+        data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?",
+        } %>
       </div>
     <% end %>
-    <%= form.file_field :cover_image %>
+    <%= form.file_field :cover_image, class: "bg-white rounded p-2" %>
   </div>
-  <div>
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
+  <div class="p-2">
+    <%= form.label :content, class: "font-bold p-2" %>
+    <%= form.rich_text_area :content, class: "bg-white rounded" %>
   </div>
-  <div>
-    <%= form.label :published_at %>
-    <%= form.datetime_select :published_at, include_blank: true %>
+  <div class="p-2">
+    <%= form.label :published_at, class: "font-bold p-2" %>
+    <%= form.datetime_select :published_at,
+                         include_blank: true,
+                         class: "bg-white rounded" %>
   </div>
 
-  <%= form.button %>
+  <%= form.button class: "bg-blue-600 rounded text-white p-2 mt-4" %>
 <% end %>

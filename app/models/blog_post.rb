@@ -1,6 +1,8 @@
 class BlogPost < ApplicationRecord
   has_one_attached :cover_image
   has_rich_text :content
+  has_many :likes
+  has_many :comments, as: :commentable
 
   validates :title, presence: true
   validates :content, presence: true
@@ -20,5 +22,17 @@ class BlogPost < ApplicationRecord
 
   def scheduled?
     published_at? && published_at > Time.current
+  end
+
+  def liked_by?(user)
+    likes.where(user: user).any?
+  end
+
+  def like(user)
+    likes.where(user: user).first_or_create
+  end
+
+  def unlike(user)
+    likes.where(user: user).destroy_all
   end
 end

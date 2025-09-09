@@ -1,0 +1,10 @@
+<%= tag.div id: dom_id(post, :likes), class: "flex" do %>
+  <%= button_to like_button_icon(post),
+  blog_post_like_path(post),
+  method: :patch,
+  class: "text-red-500 p-2" %>
+
+  <p class="p-2">
+    <%= pluralize(post.likes_count, "Like") %>
+  </p>
+<% end %>

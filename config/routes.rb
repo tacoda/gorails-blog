@@ -18,7 +18,13 @@ Rails.application.routes.draw do
   # post "/blog_posts", to: "blog_posts#create", as: :blog_posts
 
   resources :blog_posts do
-    resource :cover_image, only: [:destroy], module: :blog_posts
+    resource :cover_image, only: [ :destroy ], module: :blog_posts
+    resource :like
+    resources :comments, module: :blog_posts
+  end
+
+  resources :comments do
+    resources :comments, module: :comments
   end
 
   # Defines the root path route ("/")

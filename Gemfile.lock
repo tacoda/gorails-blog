@@ -123,6 +123,9 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    html-pipeline (3.2.3)
+      selma (~> 0.4)
+      zeitwerk (~> 2.5)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     image_processing (1.14.0)
@@ -305,6 +308,9 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    selma (0.4.13-aarch64-linux)
+    selma (0.4.13-arm64-darwin)
+    selma (0.4.13-x86_64-linux)
     solid_cable (3.0.8)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -382,6 +388,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
+  html-pipeline (~> 3.2)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
